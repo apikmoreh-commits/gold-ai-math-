@@ -15,7 +15,6 @@
     }
 
     body {
-      /* Added High-Quality Unique Dark Gold Abstract Wallpaper */
       background-color: #080b12;
       background-image: linear-gradient(rgba(8, 11, 18, 0.85), rgba(8, 11, 18, 0.85)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80');
       background-size: cover;
@@ -26,21 +25,20 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       position: relative;
       overflow-x: hidden;
-      padding: 20px 15px;
+      padding: 40px 20px;
     }
 
-    /* Unique Dark Gold Abstract Wallpaper Overlay Effects */
     .bg-glow-gold {
       position: absolute;
-      width: 400px;
-      height: 400px;
+      width: 800px;
+      height: 800px;
       background: radial-gradient(circle, rgba(255, 215, 0, 0.25), rgba(255, 140, 0, 0.05), transparent);
-      border-radius: 50%;
-      filter: blur(100px);
-      top: -100px;
+      border-radius: 60%;
+      filter: blur(120px);
+      top: -150px;
       left: 50%;
       transform: translateX(-50%);
       z-index: -1;
@@ -48,86 +46,89 @@
 
     .bg-glow-blue {
       position: absolute;
-      width: 300px;
-      height: 300px;
+      width: 500px;
+      height: 500px;
       background: radial-gradient(circle, rgba(79, 172, 254, 0.15), transparent);
       border-radius: 50%;
-      filter: blur(90px);
-      bottom: -50px;
-      right: -50px;
+      filter: blur(110px);
+      bottom: -100px;
+      right: -100px;
       z-index: -1;
     }
 
-    /* Main Container Glassmorphism */
+    /* Significantly Enlarged Main Card Container */
     .app-card {
-      width: 100%;
-      max-width: 480px;
+      width: 95%;
+      max-width: 850px;
+      min-height: 650px;
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 215, 0, 0.25);
-      border-radius: 24px;
-      padding: 28px 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-      margin-top: 10px;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 32px;
+      padding: 45px 35px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    /* Brand Header */
     .brand-title {
-      font-size: 2.4rem;
+      font-size: 3.2rem;
       font-weight: 800;
       text-align: center;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       background: linear-gradient(135deg, #ffd700, #ffaa00);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
 
     .subtitle {
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       color: #a0aec0;
-      margin-bottom: 24px;
+      margin-bottom: 30px;
     }
 
-    /* Input Controls */
     .input-group {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      margin-bottom: 20px;
+      gap: 18px;
+      margin-bottom: 25px;
     }
 
     textarea {
       width: 100%;
-      height: 95px;
+      height: 150px;
       background: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 14px;
-      padding: 12px 15px;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 18px;
+      padding: 18px 20px;
       color: #fff;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       outline: none;
-      resize: none;
+      resize: vertical;
     }
 
     textarea:focus {
       border-color: #ffd700;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
     }
 
     .file-upload-label {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       background: rgba(255, 255, 255, 0.08);
-      border: 1px dashed rgba(255, 215, 0, 0.5);
-      padding: 12px;
-      border-radius: 14px;
+      border: 1.5px dashed rgba(255, 215, 0, 0.5);
+      padding: 16px;
+      border-radius: 18px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 1.05rem;
       color: #e2e8f0;
+      font-weight: 600;
     }
 
     input[type="file"] {
@@ -137,37 +138,41 @@
     .preview-box {
       display: none;
       width: 100%;
-      max-height: 180px;
-      border-radius: 12px;
+      max-height: 280px;
+      border-radius: 16px;
       object-fit: cover;
-      margin-top: 8px;
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      margin-top: 10px;
+      border: 1px solid rgba(255, 215, 0, 0.4);
     }
 
-    /* Action Buttons */
     .btn-solve {
       width: 100%;
-      padding: 14px;
+      padding: 18px;
       border: none;
-      border-radius: 14px;
+      border-radius: 18px;
       background: linear-gradient(135deg, #ffd700, #ff8c00);
       color: #000;
-      font-weight: 700;
-      font-size: 1rem;
+      font-weight: 800;
+      font-size: 1.2rem;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.35);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-solve:active {
+      transform: scale(0.98);
     }
 
     .btn-info {
       width: 100%;
-      padding: 10px;
+      padding: 14px;
       margin-top: 12px;
-      border: 1px solid rgba(255, 215, 0, 0.4);
-      border-radius: 12px;
+      border: 1.5px solid rgba(255, 215, 0, 0.4);
+      border-radius: 16px;
       background: rgba(255, 215, 0, 0.08);
       color: #ffd700;
-      font-weight: 600;
-      font-size: 0.85rem;
+      font-weight: 700;
+      font-size: 1rem;
       cursor: pointer;
       transition: 0.3s ease;
     }
@@ -176,73 +181,70 @@
       background: rgba(255, 215, 0, 0.2);
     }
 
-    /* Solution Container */
     .solution-box {
-      margin-top: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 16px;
-      padding: 16px;
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      margin-top: 25px;
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1.5px solid rgba(255, 215, 0, 0.3);
       display: none;
     }
 
     .solution-title {
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: #ffd700;
-      font-weight: 600;
-      margin-bottom: 8px;
+      font-weight: 700;
+      margin-bottom: 12px;
     }
 
-    /* Creator Profile Section / Modal */
     .creator-box {
-      margin-top: 16px;
-      background: rgba(15, 23, 42, 0.85);
-      border-radius: 16px;
-      padding: 18px;
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      margin-top: 20px;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1.5px solid rgba(255, 215, 0, 0.35);
       display: none;
     }
 
     .creator-box h3 {
       color: #ffd700;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
     }
 
     .creator-box p {
-      font-size: 0.88rem;
+      font-size: 1rem;
       color: #cbd5e0;
-      line-height: 1.5;
-      margin-bottom: 8px;
+      line-height: 1.6;
+      margin-bottom: 10px;
     }
 
     .tag-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
+      gap: 8px;
+      margin-top: 12px;
     }
 
     .tag {
-      background: rgba(255, 215, 0, 0.15);
+      background: rgba(255, 215, 0, 0.18);
       color: #ffd700;
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 215, 0, 0.4);
     }
 
-    /* Footer */
     footer {
-      margin-top: 25px;
-      font-size: 0.85rem;
+      margin-top: 35px;
+      font-size: 1rem;
       color: #a0aec0;
       text-align: center;
     }
 
     footer span {
       color: #ffd700;
-      font-weight: 600;
+      font-weight: 700;
     }
   </style>
 </head>
@@ -252,46 +254,48 @@
   <div class="bg-glow-blue"></div>
 
   <div class="app-card">
-    <h1 class="brand-title">GOLD AI</h1>
-    <p class="subtitle">Snap or type any math problem for step-by-step solutions.</p>
+    <div>
+      <h1 class="brand-title">GOLD AI</h1>
+      <p class="subtitle">Snap or type any math problem for step-by-step solutions.</p>
 
-    <div class="input-group">
-      <textarea id="mathText" placeholder="Type your math equation here..."></textarea>
-      
-      <label for="mathImage" class="file-upload-label">
-        📷 Upload Photo of Question
-      </label>
-      <input type="file" id="mathImage" accept="image/*" onchange="previewFile()">
-      
-      <img id="imagePreview" class="preview-box" alt="Math Question Preview">
+      <div class="input-group">
+        <textarea id="mathText" placeholder="Type your math equation here (e.g. 50 - 60 or 12 * 8)..."></textarea>
+        
+        <label for="mathImage" class="file-upload-label">
+          📷 Upload Photo of Question
+        </label>
+        <input type="file" id="mathImage" accept="image/*" onchange="previewFile()">
+        
+        <img id="imagePreview" class="preview-box" alt="Math Question Preview">
 
-      <button class="btn-solve" onclick="solveProblem()">Solve Instantly</button>
-      <button class="btn-info" onclick="toggleCreatorInfo()"> More Info About Creator</button>
-    </div>
+        <button class="btn-solve" onclick="solveProblem()">Solve Instantly</button>
+        <button class="btn-info" onclick="toggleCreatorInfo()">More Info About Creator</button>
+      </div>
 
-    <!-- Creator Info Box -->
-    <div id="creatorBox" class="creator-box">
-      <h3>About the Maker: MD Junaid</h3>
-      <p><strong>MD Junaid</strong> is an ambitious student developer, problem solver, and AI enthusiast from Manipur, India.</p>
-      <p>Driven by a deep focus on academic excellence—including preparation for prestigious entrance examinations like RIMC—he builds tools like <strong>GOLD AI</strong> to make learning, mathematics, and problem-solving fast and accessible to everyone.</p>
-      <div class="tag-list">
-        <span class="tag">AI Developer</span>
-        <span class="tag">Math Solver Specialist</span>
-        <span class="tag">RIMC Aspirant</span>
-        <span class="tag">Manipur, India</span>
+      <!-- Creator Info Box -->
+      <div id="creatorBox" class="creator-box">
+        <h3>About the Maker: MD Junaid</h3>
+        <p><strong>MD Junaid</strong> is an ambitious student developer, problem solver, and AI enthusiast from Manipur, India.</p>
+        <p>Driven by a deep focus on academic excellence—including preparation for prestigious entrance examinations like RIMC—he builds tools like <strong>GOLD AI</strong> to make learning, mathematics, and problem-solving fast and accessible to everyone.</p>
+        <div class="tag-list">
+          <span class="tag">AI Developer</span>
+          <span class="tag">Math Solver Specialist</span>
+          <span class="tag">RIMC Aspirant</span>
+          <span class="tag">Manipur, India</span>
+        </div>
+      </div>
+
+      <!-- Solution Output -->
+      <div id="solutionContainer" class="solution-box">
+        <div class="solution-title">⚡ Step-by-Step Solution</div>
+        <div id="solutionText" style="font-size:1.05rem; color:#e2e8f0; line-height:1.6;"></div>
       </div>
     </div>
 
-    <!-- Solution Output -->
-    <div id="solutionContainer" class="solution-box">
-      <div class="solution-title">⚡ Step-by-Step Solution</div>
-      <div id="solutionText" style="font-size:0.9rem; color:#e2e8f0; line-height:1.5;"></div>
-    </div>
+    <footer>
+      Made by <span>MD Junaid</span> @gold ai
+    </footer>
   </div>
-
-  <footer>
-    Made by <span>MD Junaid</span> @gold ai
-  </footer>
 
   <script>
     function previewFile() {
@@ -322,29 +326,45 @@
     }
 
     function solveProblem() {
-      const text = document.getElementById('mathText').value;
-      const file = document.getElementById('mathImage').files[0];
+      const textInput = document.getElementById('mathText').value.trim();
+      const fileInput = document.getElementById('mathImage').files[0];
       const solutionContainer = document.getElementById('solutionContainer');
       const solutionText = document.getElementById('solutionText');
 
-      if (!text && !file) {
+      if (!textInput && !fileInput) {
         alert("Please enter a question or upload an image first!");
         return;
       }
 
       solutionContainer.style.display = "block";
-      solutionText.innerHTML = "<em>Analyzing and solving problem...</em>";
 
-      setTimeout(() => {
-        if (text) {
-          solutionText.innerHTML = `<strong>Problem:</strong> ${text}<br><br><strong>Step 1:</strong> Parse mathematical expressions and variables.<br><strong>Step 2:</strong> Solve algebraically.<br><br><strong>Final Output:</strong> Verified step-by-step solution complete!`;
-        } else {
-          solutionText.innerHTML = `<strong>Image Processed:</strong> Extracted equation from uploaded image.<br><br><strong>Final Output:</strong> Solution calculated successfully!`;
+      if (textInput) {
+        try {
+          let sanitizedExpression = textInput.replace(/x/g, '*').replace(/÷/g, '/');
+          let calculatedResult = Function('"use strict"; return (' + sanitizedExpression + ')')();
+
+          solutionText.innerHTML = `
+            <strong>Problem:</strong> ${textInput}<br><br>
+            <strong>Step 1:</strong> Evaluate arithmetic expression.<br>
+            <strong>Step 2:</strong> Compute calculation: ${textInput}<br><br>
+            <strong>Final Answer:</strong> <span style="color:#ffd700; font-weight:bold; font-size:1.3rem;">${calculatedResult}</span>
+          `;
+        } catch (error) {
+          solutionText.innerHTML = `
+            <strong>Problem:</strong> ${textInput}<br><br>
+            <em>Unable to evaluate expression syntax directly. Please check input (e.g., 50 - 60 or 5 * 10).</em>
+          `;
         }
-      }, 1000);
+      } else if (fileInput) {
+        solutionText.innerHTML = `
+          <strong>Image Processed:</strong> Image uploaded successfully.<br><br>
+          <em>Note: Image OCR recognition requires an API connection to extract text from images automatically.</em>
+        `;
+      }
     }
   </script>
 
 </body>
 </html>
+
 
