@@ -33,10 +33,10 @@
 
     .bg-glow-gold {
       position: absolute;
-      width: 800px;
-      height: 800px;
+      width: 600px;
+      height: 600px;
       background: radial-gradient(circle, rgba(255, 215, 0, 0.25), rgba(255, 140, 0, 0.05), transparent);
-      border-radius: 60%;
+      border-radius: 50%;
       filter: blur(120px);
       top: -150px;
       left: 50%;
@@ -56,7 +56,6 @@
       z-index: -1;
     }
 
-    /* Significantly Enlarged Main Card Container */
     .app-card {
       width: 95%;
       max-width: 850px;
@@ -140,9 +139,10 @@
       width: 100%;
       max-height: 280px;
       border-radius: 16px;
-      object-fit: cover;
+      object-fit: contain;
       margin-top: 10px;
       border: 1px solid rgba(255, 215, 0, 0.4);
+      background: rgba(0,0,0,0.4);
     }
 
     .btn-solve {
@@ -259,7 +259,7 @@
       <p class="subtitle">Snap or type any math problem for step-by-step solutions.</p>
 
       <div class="input-group">
-        <textarea id="mathText" placeholder="Type your math equation here (e.g. 50 - 60 or 12 * 8)..."></textarea>
+        <textarea id="mathText" placeholder="Type your math equation or question here..."></textarea>
         
         <label for="mathImage" class="file-upload-label">
           📷 Upload Photo of Question
@@ -268,7 +268,7 @@
         
         <img id="imagePreview" class="preview-box" alt="Math Question Preview">
 
-        <button class="btn-solve" onclick="solveProblem()">Solve Instantly</button>
+        <button class="btn-solve" onclick="solveProblem()">Solve with AI</button>
         <button class="btn-info" onclick="toggleCreatorInfo()">More Info About Creator</button>
       </div>
 
@@ -287,8 +287,8 @@
 
       <!-- Solution Output -->
       <div id="solutionContainer" class="solution-box">
-        <div class="solution-title">⚡ Step-by-Step Solution</div>
-        <div id="solutionText" style="font-size:1.05rem; color:#e2e8f0; line-height:1.6;"></div>
+        <div class="solution-title">⚡ AI Step-by-Step Solution</div>
+        <div id="solutionText" style="font-size:1.05rem; color:#e2e8f0; line-height:1.6; white-space: pre-wrap;"></div>
       </div>
     </div>
 
@@ -298,6 +298,8 @@
   </div>
 
   <script>
+    const GEMINI_API_KEY = "AQ.Ab8RN6Id6_sGM4K_HBk6T21TVYrQQ-Pzozh6ahEjp_Xesab0Sw";
+
     function previewFile() {
       const file = document.getElementById('mathImage').files[0];
       const preview = document.getElementById('imagePreview');
@@ -325,7 +327,7 @@
       }
     }
 
-    function solveProblem() {
+    async function solveProblem() {
       const textInput = document.getElementById('mathText').value.trim();
       const fileInput = document.getElementById('mathImage').files[0];
       const solutionContainer = document.getElementById('solutionContainer');
@@ -337,34 +339,62 @@
       }
 
       solutionContainer.style.display = "block";
+      solutionText.innerHTML = "<em>Thinking... Reading your question and calculating step-by-step solution...</em>";
 
-      if (textInput) {
-        try {
-          let sanitizedExpression = textInput.replace(/x/g, '*').replace(/÷/g, '/');
-          let calculatedResult = Function('"use strict"; return (' + sanitizedExpression + ')')();
+      try {
+        let contentsArray = [];
 
-          solutionText.innerHTML = `
-            <strong>Problem:</strong> ${textInput}<br><br>
-            <strong>Step 1:</strong> Evaluate arithmetic expression.<br>
-            <strong>Step 2:</strong> Compute calculation: ${textInput}<br><br>
-            <strong>Final Answer:</strong> <span style="color:#ffd700; font-weight:bold; font-size:1.3rem;">${calculatedResult}</span>
-          `;
-        } catch (error) {
-          solutionText.innerHTML = `
-            <strong>Problem:</strong> ${textInput}<br><br>
-            <em>Unable to evaluate expression syntax directly. Please check input (e.g., 50 - 60 or 5 * 10).</em>
-          `;
+        if (fileInput) {
+          const base64Image = await convertFileToBase64(fileInput);
+          contentsArray.push({
+            inline_data: {
+              mime_type: fileInput.type,
+              data: base64Image.split(',')[1]
+            }
+          });
         }
-      } else if (fileInput) {
-        solutionText.innerHTML = `
-          <strong>Image Processed:</strong> Image uploaded successfully.<br><br>
-          <em>Note: Image OCR recognition requires an API connection to extract text from images automatically.</em>
-        `;
+
+        let promptText = "You are GOLD AI, an expert math tutor created by MD Junaid. Please solve the math problem clearly. Provide: 1. Problem Statement 2. Step-by-step explanation 3. Final Answer formatted clearly.";
+        if (textInput) {
+          promptText += "\n\nUser Question: " + textInput;
+        }
+
+        contentsArray.push({ text: promptText });
+
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: contentsArray }]
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.candidates && data.candidates[0].content.parts[0].text) {
+          solutionText.innerText = data.candidates[0].content.parts[0].text;
+        } else {
+          solutionText.innerText = "Error: Could not retrieve a valid answer. Please try again or re-upload your image.";
+        }
+
+      } catch (error) {
+        console.error(error);
+        solutionText.innerText = "Error connecting to AI backend. Please check your internet connection or API settings.";
       }
+    }
+
+    function convertFileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
     }
   </script>
 
 </body>
 </html>
+
 
 
